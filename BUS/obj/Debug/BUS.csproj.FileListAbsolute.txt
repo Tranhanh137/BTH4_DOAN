@@ -1,0 +1,14 @@
+D:\Học tập\ĐA1\BUS\bin\Debug\BUS.dll
+D:\Học tập\ĐA1\BUS\bin\Debug\BUS.pdb
+D:\Học tập\ĐA1\BUS\bin\Debug\DAL.dll
+D:\Học tập\ĐA1\BUS\bin\Debug\EntityFramework.dll
+D:\Học tập\ĐA1\BUS\bin\Debug\DAL.pdb
+D:\Học tập\ĐA1\BUS\bin\Debug\DAL.dll.config
+D:\Học tập\ĐA1\BUS\bin\Debug\EntityFramework.xml
+D:\Học tập\ĐA1\BUS\obj\Debug\BUS.csproj.AssemblyReference.cache
+D:\Học tập\ĐA1\BUS\obj\Debug\BUS.csproj.CoreCompileInputs.cache
+D:\Học tập\ĐA1\BUS\obj\Debug\BUS.csproj.CopyComplete
+D:\Học tập\ĐA1\BUS\obj\Debug\BUS.dll
+D:\Học tập\ĐA1\BUS\obj\Debug\BUS.pdb
+D:\Học tập\ĐA1\BUS\bin\Debug\EntityFramework.SqlServer.dll
+D:\Học tập\ĐA1\BUS\bin\Debug\EntityFramework.SqlServer.xml

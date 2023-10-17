@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DA1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CTMuonSach">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="int" Nullable="false" />
+    <Property Name="MaMS" Type="int" Nullable="false" />
+    <Property Name="MaSach" Type="int" Nullable="false" />
+    <Property Name="SoLuong" Type="int" Nullable="false" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="CTTraSach">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="int" Nullable="false" />
+    <Property Name="MaTS" Type="int" Nullable="false" />
+    <Property Name="MaSach" Type="int" Nullable="false" />
+    <Property Name="SoLuong" Type="int" Nullable="false" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="DangNhap">
+    <Key>
+      <PropertyRef Name="TaiKhoan" />
+    </Key>
+    <Property Name="TaiKhoan" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="MaQuyen" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoaiSach">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="int" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MuonSach">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="int" Nullable="false" />
+    <Property Name="MaTT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="MaSV" Type="int" />
+    <Property Name="NgayMuon" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Quyen">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sach">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="int" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MaLS" Type="int" Nullable="false" />
+    <Property Name="SoLuong" Type="int" Nullable="false" />
+    <Property Name="TenTG" Type="nvarchar" MaxLength="100" />
+    <Property Name="NamXB" Type="int" />
+  </EntityType>
+  <EntityType Name="SinhVien">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="int" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
+    <Property Name="SDT" Type="varchar" MaxLength="10" />
+    <Property Name="Lop" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ThuThu">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="SDT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MaQuyen" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TraSach">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="int" Nullable="false" />
+    <Property Name="MaTT" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="MaSV" Type="int" />
+    <Property Name="NgayMuon" Type="datetime" Nullable="false" />
+    <Property Name="NgayTra" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__CTMuonSac__MaSac__4BAC3F29">
+    <End Role="Sach" Type="Self.Sach" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CTMuonSach" Type="Self.CTMuonSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="CTMuonSach">
+        <PropertyRef Name="MaSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTMuonSach__MaMS__4AB81AF0">
+    <End Role="MuonSach" Type="Self.MuonSach" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CTMuonSach" Type="Self.CTMuonSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MuonSach">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="CTMuonSach">
+        <PropertyRef Name="MaMS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTTraSach__MaSac__534D60F1">
+    <End Role="Sach" Type="Self.Sach" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CTTraSach" Type="Self.CTTraSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="CTTraSach">
+        <PropertyRef Name="MaSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTTraSach__MaTS__52593CB8">
+    <End Role="TraSach" Type="Self.TraSach" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CTTraSach" Type="Self.CTTraSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TraSach">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="CTTraSach">
+        <PropertyRef Name="MaTS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DangNhap__MaQuye__38996AB5">
+    <End Role="Quyen" Type="Self.Quyen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DangNhap" Type="Self.DangNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quyen">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="DangNhap">
+        <PropertyRef Name="MaQuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MuonSach__MaSV__47DBAE45">
+    <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MuonSach" Type="Self.MuonSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinhVien">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="MuonSach">
+        <PropertyRef Name="MaSV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MuonSach__MaTT__46E78A0C">
+    <End Role="ThuThu" Type="Self.ThuThu" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MuonSach" Type="Self.MuonSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThuThu">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="MuonSach">
+        <PropertyRef Name="MaTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sach__MaLS__412EB0B6">
+    <End Role="LoaiSach" Type="Self.LoaiSach" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiSach">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="Sach">
+        <PropertyRef Name="MaLS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThuThu__MaQuyen__3C69FB99">
+    <End Role="Quyen" Type="Self.Quyen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ThuThu" Type="Self.ThuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quyen">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="ThuThu">
+        <PropertyRef Name="MaQuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TraSach__MaSV__4F7CD00D">
+    <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TraSach" Type="Self.TraSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinhVien">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="TraSach">
+        <PropertyRef Name="MaSV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TraSach__MaTT__4E88ABD4">
+    <End Role="ThuThu" Type="Self.ThuThu" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TraSach" Type="Self.TraSach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThuThu">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="TraSach">
+        <PropertyRef Name="MaTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DA1ModelStoreContainer">
+    <EntitySet Name="CTMuonSach" EntityType="Self.CTMuonSach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTTraSach" EntityType="Self.CTTraSach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DangNhap" EntityType="Self.DangNhap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiSach" EntityType="Self.LoaiSach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MuonSach" EntityType="Self.MuonSach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quyen" EntityType="Self.Quyen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sach" EntityType="Self.Sach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SinhVien" EntityType="Self.SinhVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThuThu" EntityType="Self.ThuThu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TraSach" EntityType="Self.TraSach" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CTMuonSac__MaSac__4BAC3F29" Association="Self.FK__CTMuonSac__MaSac__4BAC3F29">
+      <End Role="Sach" EntitySet="Sach" />
+      <End Role="CTMuonSach" EntitySet="CTMuonSach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTMuonSach__MaMS__4AB81AF0" Association="Self.FK__CTMuonSach__MaMS__4AB81AF0">
+      <End Role="MuonSach" EntitySet="MuonSach" />
+      <End Role="CTMuonSach" EntitySet="CTMuonSach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTTraSach__MaSac__534D60F1" Association="Self.FK__CTTraSach__MaSac__534D60F1">
+      <End Role="Sach" EntitySet="Sach" />
+      <End Role="CTTraSach" EntitySet="CTTraSach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTTraSach__MaTS__52593CB8" Association="Self.FK__CTTraSach__MaTS__52593CB8">
+      <End Role="TraSach" EntitySet="TraSach" />
+      <End Role="CTTraSach" EntitySet="CTTraSach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DangNhap__MaQuye__38996AB5" Association="Self.FK__DangNhap__MaQuye__38996AB5">
+      <End Role="Quyen" EntitySet="Quyen" />
+      <End Role="DangNhap" EntitySet="DangNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MuonSach__MaSV__47DBAE45" Association="Self.FK__MuonSach__MaSV__47DBAE45">
+      <End Role="SinhVien" EntitySet="SinhVien" />
+      <End Role="MuonSach" EntitySet="MuonSach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MuonSach__MaTT__46E78A0C" Association="Self.FK__MuonSach__MaTT__46E78A0C">
+      <End Role="ThuThu" EntitySet="ThuThu" />
+      <End Role="MuonSach" EntitySet="MuonSach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sach__MaLS__412EB0B6" Association="Self.FK__Sach__MaLS__412EB0B6">
+      <End Role="LoaiSach" EntitySet="LoaiSach" />
+      <End Role="Sach" EntitySet="Sach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThuThu__MaQuyen__3C69FB99" Association="Self.FK__ThuThu__MaQuyen__3C69FB99">
+      <End Role="Quyen" EntitySet="Quyen" />
+      <End Role="ThuThu" EntitySet="ThuThu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TraSach__MaSV__4F7CD00D" Association="Self.FK__TraSach__MaSV__4F7CD00D">
+      <End Role="SinhVien" EntitySet="SinhVien" />
+      <End Role="TraSach" EntitySet="TraSach" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TraSach__MaTT__4E88ABD4" Association="Self.FK__TraSach__MaTT__4E88ABD4">
+      <End Role="ThuThu" EntitySet="ThuThu" />
+      <End Role="TraSach" EntitySet="TraSach" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
